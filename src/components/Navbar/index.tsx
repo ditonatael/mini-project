@@ -21,6 +21,7 @@ export default function Navbar() {
               width={90}
               height={24}
               quality={100}
+              style={{ width: 90, height: 24 }}
             />
           </span>
           <div className="w-[600px] h-10 rounded-full border-2 border-black bg-[#f3f3f3] hidden lg:flex items-center justify-start px-3 gap-1">

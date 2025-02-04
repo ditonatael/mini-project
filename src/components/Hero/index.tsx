@@ -9,7 +9,10 @@ export default function HeroSection() {
           src={"/hero-menswear.webp"}
           alt="Menswear"
           fill={true}
+          sizes="fill"
           quality={100}
+          loading="lazy"
+          priority={false}
           className="object-cover object-[25%_30%] group-hover:scale-105 transition-transform duration-700 hover:cursor-pointer opacity-95"
         />
         <div className="absolute h-[125px] w-full m-auto right-0 -bottom-3 md:bottom-7 lg:bottom-40 left-0 flex flex-col items-center justify-center gap-1 lg:gap-4">
@@ -26,7 +29,10 @@ export default function HeroSection() {
           src={"/hero-womenswear.webp"}
           alt="Menswear"
           fill={true}
+          sizes="fill"
           quality={100}
+          loading="lazy"
+          priority={false}
           className="object-cover group-hover:scale-105 transition-transform duration-700 hover:cursor-pointer"
         />
         <div className="absolute h-[125px] w-full m-auto right-0 -bottom-3 md:bottom-7 lg:bottom-40 left-0 flex flex-col items-center justify-center gap-1 lg:gap-4">
