@@ -6,4 +6,5 @@ export interface Products {
     image: string[];
     condition: string
     brand: string;
+    sex: ("mens" | "womens")[];
 }

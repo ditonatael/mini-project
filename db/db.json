@@ -10,7 +10,8 @@
         "https://media-photos.depop.com/b1/45533943/1785564656_3b50a254bcc74e20a9430058d96f2c0d/P0.jpg"
       ],
       "condition": "Brand New",
-      "brand": "Nike"
+      "brand": "Nike",
+      "sex": ["Mens"]
     },
     {
       "id": "2",
@@ -22,7 +23,8 @@
         "https://media-photos.depop.com/b1/43950275/1790405799_77c52a90320f4be9871c7b7dd590469f/P0.jpg"
       ],
       "condition": "Used",
-      "brand": "Nike"
+      "brand": "Nike",
+      "sex": ["Mens"]
     },
     {
       "id": "3",
@@ -34,7 +36,8 @@
         "https://media-photos.depop.com/b1/38587473/1724728367_06a59c918e404a14bf4b0d3caf9ed851/P0.jpg"
       ],
       "condition": "Used",
-      "brand": "Adidas"
+      "brand": "Adidas",
+      "sex": ["Mens"]
     },
     {
       "id": "4",
@@ -46,7 +49,60 @@
         "https://media-photos.depop.com/b1/20364262/1789675097_acabf75060b749c89933f78044bafb32/P0.jpg"
       ],
       "condition": "Used",
-      "brand": "Adidas"
+      "brand": "Adidas",
+      "sex": ["Womens"]
+    },
+    {
+      "id": "5",
+      "name": "JAG Men's Navy Jacket",
+      "description": "Large Navy Denim Jacket w Graphic",
+      "price": 55,
+      "image": [
+        "https://media-photos.depop.com/b1/33329971/1790320640_583a724b0ca94d09b0b3c9fc9906e224/P0.jpg",
+        "https://media-photos.depop.com/b1/33329971/1790320669_9d85a49cec67446897d0ffe04f0b727f/P0.jpg"
+      ],
+      "condition": "Used",
+      "brand": "Dickies",
+      "sex": ["Mens"]
+    },
+    {
+      "id": "6",
+      "name": "Adidas Women's Black and Green Top",
+      "description": "Manchester united soccer jersey - super sick coloring",
+      "price": 40,
+      "image": [
+        "https://media-photos.depop.com/b1/46723312/1785683026_fdb9ea31a2cd4ec982bd2381a0fd3484/P0.jpg",
+        "https://media-photos.depop.com/b1/46723312/1785683097_4a501eb3a0a04841a3ab03a5ba5ac913/P0.jpg"
+      ],
+      "condition": "Like New",
+      "brand": "Adidas",
+      "sex": ["Womens"]
+    },
+    {
+      "id": "7",
+      "name": "Roundtree & Yorke Men's Black and White Jumper",
+      "description": "Vintage sweater large",
+      "price": 34.2,
+      "image": [
+        "https://media-photos.depop.com/b1/36067795/1790429391_93ea0267d68b40d9bdb64c14eb80aee7/P0.jpg",
+        "https://media-photos.depop.com/b1/36067795/1790429401_72b28bb666b84ab5a15cc5ea5d673a08/P0.jpg"
+      ],
+      "condition": "Brand New",
+      "brand": "Roundtree & Yorkee",
+      "sex": ["Mens"]
+    },
+    {
+      "id": "8",
+      "name": "Russell Athletic Men's Grey Joggers-tracksuits",
+      "description": "Grey Russel Athletic Sweatpants",
+      "price": 18,
+      "image": [
+        "https://media-photos.depop.com/b1/40116770/1790462118_53db4d61a20a4735baf4380d818fcd12/P0.jpg",
+        "https://media-photos.depop.com/b1/40116770/1790462126_448cd8f1838f478199f26c6430fac043/P0.jpg"
+      ],
+      "condition": "Used",
+      "brand": "Rusell Athletic",
+      "sex": ["Mens"]
     }
   ]
 }

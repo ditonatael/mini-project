@@ -25,7 +25,9 @@ export default function ProductList() {
         Find your best style
       </div>
       <div className="w-full md:pl-16 md:pr-10 lg:pl-0 lg:pr-0 lg:mx-[10px] grid grid-cols-12 gap-y-4 py-7">
-        <ProductCard products={products} />
+        {products.map((item, index) => (
+          <ProductCard products={item} key={index} />
+        ))}
       </div>
     </div>
   );
