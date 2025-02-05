@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Heart, ShoppingBag, Search } from "lucide-react";
 import AppSidebar from "../AppSidebar";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const categoryItems = [
@@ -13,8 +16,10 @@ export default function Navbar() {
     "Brands",
     "Sale",
   ];
+
+  const router = useRouter();
   return (
-    <div className="">
+    <div className="fixed z-10 bg-white w-full">
       <div className="h-16 border-b">
         <div className="mx-2 lg:mx-8 h-full flex items-center justify-between">
           <span className="flex items-center gap-4">
@@ -25,7 +30,8 @@ export default function Navbar() {
               width={90}
               height={24}
               quality={100}
-              style={{ width: 90, height: 24 }}
+              style={{ width: 90, height: 24, cursor: "pointer" }}
+              onClick={() => router.push("/")}
             />
           </span>
           <div className="w-[600px] h-10 rounded-full border-2 border-black bg-[#f3f3f3] hidden lg:flex items-center justify-start px-3 gap-1">

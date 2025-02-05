@@ -16,6 +16,8 @@ export default function ProductList() {
     }
   };
 
+  //  md:pl-16 md:pr-10 lg:pl-0 lg:pr-0 lg:mx-[10px]
+
   useEffect(() => {
     HandleGetProducts();
   });
@@ -24,7 +26,7 @@ export default function ProductList() {
       <div className="text-2xl md:text-3xl font-bold px-7 lg:px-0 flex justify-start">
         Find your best style
       </div>
-      <div className="w-full md:pl-16 md:pr-10 lg:pl-0 lg:pr-0 lg:mx-[10px] grid grid-cols-12 gap-y-4 py-7">
+      <div className="w-full grid grid-cols-12 gap-y-4 py-7 justify-items-center">
         {products.map((item, index) => (
           <ProductCard products={item} key={index} />
         ))}
