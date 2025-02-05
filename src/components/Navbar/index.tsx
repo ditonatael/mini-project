@@ -1,20 +1,24 @@
 import Image from "next/image";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { Heart, ShoppingBag, Search, Menu } from "lucide-react";
+import { Heart, ShoppingBag, Search } from "lucide-react";
+import AppSidebar from "../AppSidebar";
 
 export default function Navbar() {
+  const categoryItems = [
+    "Menswear",
+    "Womenswear",
+    "Kids",
+    "Sports",
+    "Brands",
+    "Sale",
+  ];
   return (
-    <div>
+    <div className="">
       <div className="h-16 border-b">
         <div className="mx-2 lg:mx-8 h-full flex items-center justify-between">
           <span className="flex items-center gap-4">
-            <Menu
-              color="#000000"
-              strokeWidth={1.75}
-              size={25}
-              className="flex lg:hidden"
-            />
+            <AppSidebar categoryItems={categoryItems} />
             <Image
               src={"/depop-logo.png"}
               alt="logo"
@@ -84,24 +88,20 @@ export default function Navbar() {
         </div>
       </div>
       <div className="h-[53px] mx-8 hidden lg:flex items-center">
-        <span className="p-4 hover:bg-black hover:cursor-pointer hover:text-white font-extrabold ">
-          Menswear
-        </span>
-        <span className="p-4 hover:bg-black hover:cursor-pointer hover:text-white font-extrabold ">
-          WomensWear
-        </span>
-        <span className="p-4 hover:bg-black hover:cursor-pointer hover:text-white font-extrabold ">
-          Kids
-        </span>
-        <span className="p-4 hover:bg-black hover:cursor-pointer hover:text-white font-extrabold ">
-          Sports
-        </span>
-        <span className="p-4 hover:bg-black hover:cursor-pointer hover:text-white font-extrabold ">
-          Brands
-        </span>
-        <span className="p-4 text-red-600 hover:bg-red-600 hover:cursor-pointer hover:text-white font-extrabold ">
-          Sale
-        </span>
+        {categoryItems.map((item, index) => {
+          return (
+            <span
+              key={index}
+              className={`p-4 hover:cursor-pointer font-extrabold ${
+                item.toLowerCase() === "sale"
+                  ? "text-red-600 hover:bg-red-600 hover:text-white"
+                  : "hover:bg-black hover:text-white"
+              }`}
+            >
+              {item}
+            </span>
+          );
+        })}
       </div>
     </div>
   );
