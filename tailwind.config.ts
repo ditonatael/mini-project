@@ -57,7 +57,7 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				montserrat: ["Montserrat"]
+				worksans: ["Work Sans"]
 			}
 		}
 	},
