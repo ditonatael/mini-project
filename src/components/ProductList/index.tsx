@@ -1,19 +1,31 @@
+"use client";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import type { Products } from "../../../types/productType";
+import ProductCard from "../ui/productCard";
+
 export default function ProductList() {
-  const items = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [products, setProducts] = useState<Products[]>([]);
+
+  const HandleGetProducts = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/products");
+      setProducts(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    HandleGetProducts();
+  });
   return (
     <div className="container mx-auto py-7">
-      <div className="text-3xl font-bold">Find your best style</div>
-      <div className="w-full mx-[10px] grid grid-cols-12 gap-y-4">
-        {items.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="col-span-3 w-[310px] h-[380px] bg-stone-400 flex flex-col"
-            >
-              <div className="w-full h-5/6 bg-zinc-100"></div>
-            </div>
-          );
-        })}
+      <div className="text-2xl md:text-3xl font-bold px-7 lg:px-0 flex justify-start">
+        Find your best style
+      </div>
+      <div className="w-full md:pl-16 md:pr-10 lg:pl-0 lg:pr-0 lg:mx-[10px] grid grid-cols-12 gap-y-4 py-7">
+        <ProductCard products={products} />
       </div>
     </div>
   );

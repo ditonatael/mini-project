@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Gildan Men's Black Sweatshirt",
+      "description": "Post Malone Stoney Rockstar Tour Black Pullover Hoodie Gildan",
+      "price": 17.75,
+      "image": [
+        "https://media-photos.depop.com/b1/45533943/1785564620_fd4c49b7376842d7b66525c4e3ef5523/P0.jpg",
+        "https://media-photos.depop.com/b1/45533943/1785564656_3b50a254bcc74e20a9430058d96f2c0d/P0.jpg"
+      ],
+      "condition": "Brand New",
+      "brand": "Nike"
+    },
+    {
+      "id": "2",
+      "name": "Nike Men's Joggers-tracksuits",
+      "description": "Nike pants",
+      "price": 20.8,
+      "image": [
+        "https://media-photos.depop.com/b1/43950275/1790405576_d54289f6fd144354b6fbca235e83f7c6/P0.jpg",
+        "https://media-photos.depop.com/b1/43950275/1790405799_77c52a90320f4be9871c7b7dd590469f/P0.jpg"
+      ],
+      "condition": "Used",
+      "brand": "Nike"
+    },
+    {
+      "id": "3",
+      "name": "Adidas Men's White T-shirt",
+      "description": "Real Madrid Soccer Jersey 23/24 - Jude Bellingham 5",
+      "price": 30,
+      "image": [
+        "https://media-photos.depop.com/b1/38587473/1712122301_2681eb60e5ec4396958a731dd958b070/P0.jpg",
+        "https://media-photos.depop.com/b1/38587473/1724728367_06a59c918e404a14bf4b0d3caf9ed851/P0.jpg"
+      ],
+      "condition": "Used",
+      "brand": "Adidas"
+    },
+    {
+      "id": "4",
+      "name": "Adidas Originals Women's White and Grey Trainers",
+      "description": "Adidas Samba OG Shoes",
+      "price": 25,
+      "image": [
+        "https://media-photos.depop.com/b1/20364262/1789674383_60cec07fe05f4673a2dc5437f8b5381f/P0.jpg",
+        "https://media-photos.depop.com/b1/20364262/1789675097_acabf75060b749c89933f78044bafb32/P0.jpg"
+      ],
+      "condition": "Used",
+      "brand": "Adidas"
+    }
+  ]
+}
