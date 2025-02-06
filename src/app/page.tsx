@@ -1,4 +1,3 @@
-import Navbar from "~/components/Navbar";
 import HeroSection from "~/components/Hero";
 import ShopByPriceSection from "~/components/PriceCategory";
 import ProductList from "~/components/ProductList";

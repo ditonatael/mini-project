@@ -93,21 +93,23 @@ export default function Navbar() {
           </span>
         </div>
       </div>
-      <div className="h-[53px] mx-8 hidden lg:flex items-center">
-        {categoryItems.map((item, index) => {
-          return (
-            <span
-              key={index}
-              className={`p-4 hover:cursor-pointer font-bold ${
-                item.toLowerCase() === "sale"
-                  ? "text-red-600 hover:bg-red-600 hover:text-white"
-                  : "hover:bg-black hover:text-white"
-              }`}
-            >
-              {item}
-            </span>
-          );
-        })}
+      <div className="w-full border-b">
+        <div className="h-[53px] mx-8 hidden lg:flex items-center">
+          {categoryItems.map((item, index) => {
+            return (
+              <span
+                key={index}
+                className={`p-4 hover:cursor-pointer font-bold ${
+                  item.toLowerCase() === "sale"
+                    ? "text-red-600 hover:bg-red-600 hover:text-white"
+                    : "hover:bg-black hover:text-white"
+                }`}
+              >
+                {item}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

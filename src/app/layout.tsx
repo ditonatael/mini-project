@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-worksans`}>
         <Navbar />
-        <div className="pt-14 lg:pt-28">{children}</div>
+        <div className="pt-14 lg:pt-28 font-worksans">{children}</div>
         <Footer />
       </body>
     </html>
