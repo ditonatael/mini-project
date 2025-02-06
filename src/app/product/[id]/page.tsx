@@ -3,10 +3,36 @@
 import { ChevronRight, ShieldCheck, Star, Truck } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
-import ProductDetailCarousel from "~/components/ProductDetailCarousel";
+import ProductDetailCarousel from "~/components/ProductDetail/Carousel";
+import YouMightLikeSection from "~/components/ProductDetail/Header";
+import { useState, useEffect, use } from "react";
+import type { Products } from "../../../../types/productType";
+import axios from "axios";
+import Image from "next/image";
 
-export default function ProductDetail() {
-  const alsoLikeItems = [1, 2, 3, 4, 5, 6, 7, 8];
+export default function ProductDetail({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const [product, setProduct] = useState<Products | null>(null);
+  const router = useRouter();
+  const resolvedParams = use(params);
+
+  const OnHandleGetSelectedProduct = async (id: string) => {
+    try {
+      const res = await axios.get(`http://localhost:5000/products?id=${id}`);
+      setProduct(res.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    OnHandleGetSelectedProduct(resolvedParams.id);
+  });
+
+  const stars = [1, 2, 3, 4, 5];
   const productImages = [1, 2, 3, 4];
   const hashtags = [
     "#onitsuka",
@@ -15,24 +41,10 @@ export default function ProductDetail() {
     "#streetwear",
     "#style",
   ];
-  const router = useRouter();
   return (
     <div className="container px-2 md:px-7 xl:mx-24 flex flex-col overflow-scroll">
       {/* Header Section */}
-      <div className="pt-12 pb-7 flex flex-col gap-4">
-        <div className="font-bold md:text-lg">You might also like</div>
-        <div className="flex items-start gap-0.5 xl:items-center xl:justify-between">
-          {alsoLikeItems.map((item, index) => {
-            return (
-              <div
-                key={index}
-                className="size-[50px] md:size-[90px] lg:size-[120px] xl:size-[150px] bg-stone-400 rounded-md"
-              ></div>
-            );
-          })}
-        </div>
-      </div>
-      {/* Product Detail */}
+      <YouMightLikeSection />
       <div className="pb-7">
         {/* Home Breadcrumb */}
         <span
@@ -46,35 +58,44 @@ export default function ProductDetail() {
         <div className="w-full h-screen flex flex-col md:flex-row">
           {/* Product Image */}
           <div className="hidden w-1/2 h-full md:flex flex-col gap-2 overflow-scroll">
-            {productImages.map((item, index) => {
+            {product?.image.map((item, index) => {
               return (
                 <div
                   key={index}
-                  className="w-full md:min-h-[350px] lg:min-h-[640px] bg-blue-400 "
-                ></div>
+                  className="w-full md:min-h-[350px] lg:min-h-[640px] bg-zinc-100 relative"
+                >
+                  <Image
+                    src={item}
+                    alt={`${product.brand}`}
+                    fill
+                    sizes="fill"
+                    quality={100}
+                  />
+                </div>
               );
             })}
           </div>
-          <ProductDetailCarousel />
+          <ProductDetailCarousel
+            images={product?.image ?? []}
+            brand={product?.brand ?? ""}
+          />
           {/* Product Description */}
           <div className="md:w-[400px] h-full flex flex-col px-4 md:pl-8">
             {/* Product Title and Price */}
-            <div className="flex flex-col gap-1 border-b pb-6">
-              <span className="text-lg md:text-xl">
-                Onitsuka Tiger Men's multi Trainers
-              </span>
-              <span className="text-xl font-bold">$40.00</span>
+            <div className="flex flex-col gap-1 border-b pb-6 pt-4 md:pt-0">
+              <span className="text-lg md:text-xl">{product?.name}</span>
+              <span className="text-xl font-bold">${product?.price}</span>
               <span className="flex gap-1 text-xs md:text-base text-stone-600">
-                Excellent condition •
-                <p className="underline underline-offset-1">Onitsuka Tiger</p>
+                {product?.condition} •
+                <p className="underline underline-offset-1">{product?.brand}</p>
               </span>
               <div className="pt-3 flex flex-col gap-2">
-                <Button className="h-11 rounded-none">Button Here</Button>
+                <Button className="h-11 rounded-none">Buy now</Button>
                 <Button
                   variant={"outline"}
                   className="h-11 rounded-none border-2 border-black"
                 >
-                  Button Here
+                  Add to bag
                 </Button>
               </div>
               <div className="pt-4 flex flex-col gap-4">
@@ -100,9 +121,9 @@ export default function ProductDetail() {
             {/* Product Text */}
             <div className="py-6 border-b">
               <span>
-                Onitsuka Tiger Colorado Eighty-Five Runner, sz 11 Men’s
+                {product?.description}
                 <span className="flex flex-wrap gap-1">
-                  {hashtags.map((item, index) => {
+                  {product?.hashtags.map((item, index) => {
                     return (
                       <span
                         key={index}
@@ -125,11 +146,16 @@ export default function ProductDetail() {
                   </span>
                   <div className="flex items-center gap-1.5">
                     <div className="flex gap-1">
-                      <Star fill="#FADA5E" strokeWidth={1} size={15} />
-                      <Star fill="#FADA5E" strokeWidth={1} size={15} />
-                      <Star fill="#FADA5E" strokeWidth={1} size={15} />
-                      <Star fill="#FADA5E" strokeWidth={1} size={15} />
-                      <Star fill="#FADA5E" strokeWidth={1} size={15} />
+                      {Array.from({ length: 5 }).map((_, i) => {
+                        return (
+                          <Star
+                            key={i}
+                            fill="#FADA5E"
+                            strokeWidth={1}
+                            size={15}
+                          />
+                        );
+                      })}
                     </div>
                     <span className="text-sm">{"(20)"}</span>
                   </div>

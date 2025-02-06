@@ -5,7 +5,7 @@ import type { Products } from "../../../types/productType";
 import ProductCard from "../ui/productCard";
 
 export default function ProductList() {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Products[] | null>(null);
 
   const HandleGetProducts = async () => {
     try {
@@ -25,9 +25,10 @@ export default function ProductList() {
         Find your best style
       </div>
       <div className="w-full grid grid-cols-12 gap-y-4 py-7 justify-items-center">
-        {products.map((item, index) => (
-          <ProductCard products={item} key={index} />
-        ))}
+        {products?.length &&
+          products.map((item, index) => (
+            <ProductCard products={item} key={index} />
+          ))}
       </div>
     </div>
   );
