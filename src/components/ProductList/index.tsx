@@ -16,8 +16,6 @@ export default function ProductList() {
     }
   };
 
-  //  md:pl-16 md:pr-10 lg:pl-0 lg:pr-0 lg:mx-[10px]
-
   useEffect(() => {
     HandleGetProducts();
   });
