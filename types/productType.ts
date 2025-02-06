@@ -7,4 +7,5 @@ export interface Products {
     condition: string
     brand: string;
     sex: ("mens" | "womens")[];
+    hashtags: string[]
 }

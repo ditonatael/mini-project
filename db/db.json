@@ -11,7 +11,8 @@
       ],
       "condition": "Brand New",
       "brand": "Nike",
-      "sex": ["Mens"]
+      "sex": ["Mens"],
+      "hashtags": ["#nike", "#shirt", "#style"]
     },
     {
       "id": "2",
@@ -24,7 +25,8 @@
       ],
       "condition": "Used",
       "brand": "Nike",
-      "sex": ["Mens"]
+      "sex": ["Mens"],
+      "hashtags": ["#nike", "#joggers", "#tracksuits", "#sport"]
     },
     {
       "id": "3",
@@ -37,7 +39,8 @@
       ],
       "condition": "Used",
       "brand": "Adidas",
-      "sex": ["Mens"]
+      "sex": ["Mens"],
+      "hashtags": ["#adidas", "#shirt", "#jersey", "#madrid", "#halamadrid"]
     },
     {
       "id": "4",
@@ -50,7 +53,8 @@
       ],
       "condition": "Used",
       "brand": "Adidas",
-      "sex": ["Womens"]
+      "sex": ["Womens"],
+      "hashtags": ["#adidas", "#samba", "#shoe", "#streetwear", "#style"]
     },
     {
       "id": "5",
@@ -63,7 +67,8 @@
       ],
       "condition": "Used",
       "brand": "Dickies",
-      "sex": ["Mens"]
+      "sex": ["Mens"],
+      "hashtags": ["#dickies", "#denim", "#jacket", "#streetwear"]
     },
     {
       "id": "6",
@@ -76,7 +81,8 @@
       ],
       "condition": "Like New",
       "brand": "Adidas",
-      "sex": ["Womens"]
+      "sex": ["Womens"],
+      "hashtags": ["#adidas", "#shirt", "#jersey", "#soccer"]
     },
     {
       "id": "7",
@@ -89,7 +95,8 @@
       ],
       "condition": "Brand New",
       "brand": "Roundtree & Yorkee",
-      "sex": ["Mens"]
+      "sex": ["Mens"],
+      "hashtags": ["#roundtreeandyorkee", "#vintage", "#sweater", "#streetwear"]
     },
     {
       "id": "8",
@@ -102,7 +109,8 @@
       ],
       "condition": "Used",
       "brand": "Rusell Athletic",
-      "sex": ["Mens"]
+      "sex": ["Mens"],
+      "hashtags": ["#russel", "#joggers"]
     }
   ]
 }
