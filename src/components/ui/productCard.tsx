@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function ProductCard({ products }: { products: Products }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <div className="col-span-6 lg:col-span-3 w-[170px] h-[220px] md:w-[310px] md:h-[380px] flex flex-col items-center justify-center gap-4">
+    <div className="col-span-6 xl:col-span-3 w-[170px] h-[220px] md:w-[310px] md:h-[380px] flex flex-col items-center justify-center gap-4">
       <div
         className="w-full h-[90%] bg-zinc-100 relative rounded-md hover:cursor-pointer"
         onMouseEnter={() => setHovered(true)}

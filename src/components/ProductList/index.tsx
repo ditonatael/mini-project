@@ -23,7 +23,7 @@ export default function ProductList() {
   });
   return (
     <div className="container mx-auto py-7">
-      <div className="text-2xl md:text-3xl font-bold px-7 lg:px-0 flex justify-start">
+      <div className="text-2xl md:text-3xl font-bold px-7 md:px-14 xl:px-0 flex justify-start">
         Find your best style
       </div>
       <div className="w-full grid grid-cols-12 gap-y-4 py-7 justify-items-center">

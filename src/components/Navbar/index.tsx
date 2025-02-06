@@ -98,7 +98,7 @@ export default function Navbar() {
           return (
             <span
               key={index}
-              className={`p-4 hover:cursor-pointer font-extrabold ${
+              className={`p-4 hover:cursor-pointer font-bold ${
                 item.toLowerCase() === "sale"
                   ? "text-red-600 hover:bg-red-600 hover:text-white"
                   : "hover:bg-black hover:text-white"
