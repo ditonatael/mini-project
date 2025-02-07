@@ -21,7 +21,7 @@ export default function ProductList() {
     HandleGetProducts();
   }, []);
 
-  if (products === null) return <Loading />;
+  if (!products) return <Loading />;
 
   return (
     <div className="container mx-auto py-7">
