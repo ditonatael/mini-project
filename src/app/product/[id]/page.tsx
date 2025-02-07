@@ -9,6 +9,7 @@ import { useState, useEffect, use } from "react";
 import type { Products } from "../../../../types/productType";
 import axios from "axios";
 import Image from "next/image";
+import Loading from "~/components/Loading";
 
 export default function ProductDetail({
   params,
@@ -30,17 +31,10 @@ export default function ProductDetail({
 
   useEffect(() => {
     OnHandleGetSelectedProduct(resolvedParams.id);
-  });
+  }, []);
 
-  const stars = [1, 2, 3, 4, 5];
-  const productImages = [1, 2, 3, 4];
-  const hashtags = [
-    "#onitsuka",
-    "#onitsukatiger",
-    "#shoe",
-    "#streetwear",
-    "#style",
-  ];
+  if (!product) return <Loading />;
+
   return (
     <div className="container px-2 md:px-7 xl:mx-24 flex flex-col overflow-scroll">
       {/* Header Section */}

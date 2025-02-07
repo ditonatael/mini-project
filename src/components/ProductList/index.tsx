@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import type { Products } from "../../../types/productType";
 import ProductCard from "../ui/productCard";
+import Loading from "../Loading";
 
 export default function ProductList() {
   const [products, setProducts] = useState<Products[] | null>(null);
@@ -18,7 +19,10 @@ export default function ProductList() {
 
   useEffect(() => {
     HandleGetProducts();
-  });
+  }, []);
+
+  if (products === null) return <Loading />;
+
   return (
     <div className="container mx-auto py-7">
       <div className="text-2xl md:text-3xl font-bold px-7 md:px-14 xl:px-0 flex justify-start">
