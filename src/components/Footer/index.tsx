@@ -1,3 +1,5 @@
+"use client";
+import { usePathname } from "next/navigation";
 import { Instagram, Twitter, Youtube } from "lucide-react";
 import FooterAcordion from "../ui/footerAcordion";
 
@@ -10,8 +12,11 @@ export default function Footer() {
     { title: "Sell", children: ["Sell on Depop", "Depop Amplfied"] },
     { title: "Help", children: ["Help Centre", "Safety Centre"] },
   ];
+
+  const pathname = usePathname();
+
   return (
-    <>
+    <div className={pathname.includes("signup") ? "hidden" : "block"}>
       <div className="bg-stone-100 h-auto lg:h-[350px] w-screen flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-0 px-2 lg:px-0 lg:pl-24 font-worksans">
         {footerContent.map((item, index) => {
           return (
@@ -66,6 +71,6 @@ export default function Footer() {
           </span>
         </div>
       </div>
-    </>
+    </div>
   );
 }

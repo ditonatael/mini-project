@@ -6,6 +6,8 @@ import { Button } from "../ui/button";
 import { Heart, ShoppingBag, Search } from "lucide-react";
 import AppSidebar from "../AppSidebar";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const categoryItems = [
@@ -18,8 +20,13 @@ export default function Navbar() {
   ];
 
   const router = useRouter();
+  const pathname = usePathname();
   return (
-    <div className="fixed z-10 bg-white w-full">
+    <div
+      className={
+        pathname.includes("signup") ? "hidden" : "fixed z-10 bg-white w-full"
+      }
+    >
       <div className="h-16 border-b">
         <div className="mx-2 lg:mx-8 h-full flex items-center justify-between">
           <span className="flex items-center gap-4">
@@ -69,20 +76,24 @@ export default function Navbar() {
               </span>
             </span>
             {/* Small Screen Button */}
-            <Button className="flex lg:hidden items-center justify-center w-[116px] h-8 rounded-none font-bold text-lg">
-              Sign Up
-            </Button>
+            <Link href={"/signup"}>
+              <Button className="flex lg:hidden items-center justify-center w-[116px] h-8 rounded-none font-bold text-lg">
+                Sign Up
+              </Button>
+            </Link>
             {/* Large Screen Button */}
             <span className="hidden lg:flex items-center gap-2">
               <Button className="w-[116px] h-8 rounded-none font-bold text-lg">
                 Sell Now
               </Button>
-              <Button
-                className="w-[108px] h-8 rounded-none font-bold text-lg border-2 border-black"
-                variant="outline"
-              >
-                Sign Up
-              </Button>
+              <Link href={"/signup"}>
+                <Button
+                  className="w-[108px] h-8 rounded-none font-bold text-lg border-2 border-black"
+                  variant="outline"
+                >
+                  Sign Up
+                </Button>
+              </Link>
               <Button
                 className="w-[74px] h-7 no-underline font-bold text-lg"
                 variant="link"
