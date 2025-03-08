@@ -19,7 +19,7 @@ export default function FooterAcordion({ footerItem }: { footerItem: any[] }) {
   }, []);
   return (
     <>
-      {isClient ?? (
+      {isClient && (
         <div className="w-full block lg:hidden">
           <Accordion type="single" collapsible className="w-full">
             {footerItem.map((item, index) => {
