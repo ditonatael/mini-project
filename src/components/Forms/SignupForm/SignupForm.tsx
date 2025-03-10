@@ -11,7 +11,6 @@ import {
   FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
@@ -38,7 +37,7 @@ export default function SingupForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
         <FormField
           control={form.control}
           name="firstname"
@@ -96,7 +95,6 @@ export default function SingupForm() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                {/* <Input placeholder="Password" type="password" {...field} /> */}
                 <PasswordInput placeholder="Password" {...field} />
               </FormControl>
               <FormMessage />
@@ -115,7 +113,7 @@ export default function SingupForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full bg-red-600 text-white">
           Submit
         </Button>
       </form>
