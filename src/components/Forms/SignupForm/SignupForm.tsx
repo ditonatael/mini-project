@@ -15,6 +15,8 @@ import {
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { PasswordInput } from "~/components/ui/passwordInput";
+import axios from "axios";
+import { toast } from "sonner";
 
 export default function SingupForm() {
   const form = useForm<z.infer<typeof SignupFormSchema>>({
@@ -29,10 +31,26 @@ export default function SingupForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof SignupFormSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof SignupFormSchema>) {
+    try {
+      const normalizeValues = {
+        firstname:
+          values.firstname.charAt(0).toUpperCase() + values.firstname.slice(1),
+        lastname:
+          values.lastname.charAt(0).toUpperCase() + values.lastname.slice(1),
+        email: values.email,
+        username: values.username,
+        password: values.password,
+        country:
+          values.country.charAt(0).toUpperCase() + values.country.slice(1),
+      };
+
+      await axios.post("http://localhost:5000/users", normalizeValues);
+      toast("Signup Succesful!");
+      form.reset();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
