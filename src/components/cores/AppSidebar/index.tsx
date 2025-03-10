@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { Menu, ArrowRight } from "lucide-react";
 import {
   Sheet,
@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../ui/sheet";
+} from "../../ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export default function AppSidebar({

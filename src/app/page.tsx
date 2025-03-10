@@ -1,7 +1,7 @@
 import HeroSection from "~/components/Hero";
 import ShopByPriceSection from "~/components/PriceCategory";
 import ProductList from "~/components/ProductList";
-import PageWrapper from "~/components/PageWrapper";
+import PageWrapper from "~/components/cores/PageWrapper";
 
 export default function Home() {
   return (

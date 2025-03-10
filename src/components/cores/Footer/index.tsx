@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import { Instagram, Twitter, Youtube } from "lucide-react";
-import FooterAcordion from "../ui/footerAcordion";
+import FooterAcordion from "../../ui/footerAcordion";
 
 export default function Footer() {
   const footerContent = [

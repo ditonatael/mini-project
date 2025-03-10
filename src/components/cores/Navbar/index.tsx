@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "../../ui/input";
+import { Button } from "../../ui/button";
 import { Heart, ShoppingBag, Search } from "lucide-react";
 import AppSidebar from "../AppSidebar";
 import { useRouter } from "next/navigation";

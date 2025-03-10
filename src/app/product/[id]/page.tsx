@@ -9,8 +9,8 @@ import { useState, useEffect, use } from "react";
 import type { Products } from "../../../../types/productType";
 import axios from "axios";
 import Image from "next/image";
-import Loading from "~/components/Loading";
-import PageWrapper from "~/components/PageWrapper";
+import Loading from "~/components/cores/Loading";
+import PageWrapper from "~/components/cores/PageWrapper";
 
 export default function ProductDetail({
   params,

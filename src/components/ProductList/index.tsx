@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import type { Products } from "../../../types/productType";
 import ProductCard from "../ui/productCard";
-import Loading from "../Loading";
+import Loading from "../cores/Loading";
 
 export default function ProductList() {
   const [products, setProducts] = useState<Products[] | null>(null);
