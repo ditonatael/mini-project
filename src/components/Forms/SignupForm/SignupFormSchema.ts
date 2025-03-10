@@ -12,8 +12,8 @@ export const SignupFormSchema = z.object({
         .nonempty({ message: "Last name is required" }),
 
     email: z.string()
-        .email({ message: "Invalid email format" })
-        .nonempty({ message: "Email is required" }),
+        .nonempty({ message: "Email is required" })
+        .email({ message: "Invalid email format" }),
 
     username: z.string()
         .nonempty({ message: "Username is required" }),

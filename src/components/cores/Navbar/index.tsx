@@ -95,12 +95,14 @@ export default function Navbar() {
                   Sign Up
                 </Button>
               </Link>
-              <Button
-                className="w-[74px] h-7 no-underline font-bold text-lg"
-                variant="link"
-              >
-                Log in
-              </Button>
+              <Link href={"/signin"}>
+                <Button
+                  className="w-[74px] h-7 no-underline font-bold text-lg"
+                  variant="link"
+                >
+                  Log in
+                </Button>
+              </Link>
             </span>
           </span>
         </div>

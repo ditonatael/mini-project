@@ -29,6 +29,12 @@ export default function Signup() {
           </div>
           <div className="divider divider-neutral">or</div>
           <SingupForm />
+          <span className=" inline-flex gap-1">
+            Already have an account?{" "}
+            <a href="/signin" className="text-sky-600">
+              Sign in
+            </a>
+          </span>
         </div>
       </div>
     </div>
