@@ -1,12 +1,21 @@
 {
   "users": [
     {
-      "id": "41d0",
+      "id": "5791",
       "firstname": "Dito",
       "lastname": "Natael",
       "email": "nataeldito@gmail.com",
       "username": "dito",
-      "password": "dito123",
+      "password": "$2b$10$7r83s31znZZyfH1fPoA4SOSdWUNYu9igOAUdMQbz7Z5cUf0naepKe",
+      "country": "Indonesia"
+    },
+    {
+      "id": "649d",
+      "firstname": "Dito",
+      "lastname": "Natael",
+      "email": "ditonatael@gmail.com",
+      "username": "dito",
+      "password": "$2b$10$FcdZ2sxFDalhdvDUlak10.eipgFRD4RR0hQXL2p7VYkROlymuYcee",
       "country": "Indonesia"
     }
   ],

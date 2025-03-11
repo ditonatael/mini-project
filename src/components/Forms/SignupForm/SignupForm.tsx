@@ -17,8 +17,12 @@ import { Input } from "~/components/ui/input";
 import { PasswordInput } from "~/components/ui/passwordInput";
 import axios from "axios";
 import { toast } from "sonner";
+import bcrypt from "bcryptjs";
+import { useRouter } from "next/navigation";
 
 export default function SingupForm() {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof SignupFormSchema>>({
     resolver: zodResolver(SignupFormSchema),
     defaultValues: {
@@ -33,6 +37,14 @@ export default function SingupForm() {
 
   async function onSubmit(values: z.infer<typeof SignupFormSchema>) {
     try {
+      const { data: existingUser } = await axios.get(
+        `http://localhost:5000/users?email=${values.email}`
+      );
+      if (existingUser.length > 0) {
+        throw new Error("Email Already Registered");
+      }
+
+      const hashedPassword = await bcrypt.hash(values.password, 10);
       const normalizeValues = {
         firstname:
           values.firstname.charAt(0).toUpperCase() + values.firstname.slice(1),
@@ -40,7 +52,7 @@ export default function SingupForm() {
           values.lastname.charAt(0).toUpperCase() + values.lastname.slice(1),
         email: values.email,
         username: values.username,
-        password: values.password,
+        password: hashedPassword,
         country:
           values.country.charAt(0).toUpperCase() + values.country.slice(1),
       };
@@ -48,8 +60,13 @@ export default function SingupForm() {
       await axios.post("http://localhost:5000/users", normalizeValues);
       toast("Signup Succesful!");
       form.reset();
-    } catch (error) {
-      console.log(error);
+      router.push("/signin");
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : "Signup Failed! Please try again!";
+      toast.error(errorMessage);
     }
   }
 
