@@ -36,7 +36,7 @@ export default function Navbar() {
           <span className="flex items-center gap-4">
             <AppSidebar categoryItems={categoryItems} />
             <Image
-              src={"/depop-logo.png"}
+              src={"/assets/depop-logo.png"}
               alt="logo"
               width={90}
               height={24}

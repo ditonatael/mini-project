@@ -67,7 +67,7 @@ const SheetContent = React.forwardRef<
     >
       {children}
       <Image
-        src={"/depop-logo.png"}
+        src={"/assets/depop-logo.png"}
         alt="logo"
         width={90}
         height={24}

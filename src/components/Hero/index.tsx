@@ -6,7 +6,7 @@ export default function HeroSection() {
     <div className="w-full flex flex-col lg:flex-row items-center justify-center group">
       <div className="w-full lg:w-1/2 h-[270px] md:h-[400px] lg:h-[595px] relative overflow-hidden">
         <Image
-          src={"/hero-menswear.webp"}
+          src={"/assets/hero-menswear.webp"}
           alt="Menswear"
           fill={true}
           sizes="fill"
@@ -26,7 +26,7 @@ export default function HeroSection() {
       </div>
       <div className="w-full lg:w-1/2 h-[270px] md:h-[400px] lg:h-[595px] relative overflow-hidden">
         <Image
-          src={"/hero-womenswear.webp"}
+          src={"/assets/hero-womenswear.webp"}
           alt="Menswear"
           fill={true}
           sizes="fill"

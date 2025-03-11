@@ -8,7 +8,7 @@ export default function Signup() {
     <div className="h-screen w-full flex">
       <div className="hidden md:block w-1/2 h-full relative">
         <Image
-          src={"/signup-asset.webp"}
+          src={"/assets/signup-asset.webp"}
           alt="Signup"
           fill
           sizes="fill"
