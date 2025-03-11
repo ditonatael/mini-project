@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "~/components/cores/Navbar";
 import Footer from "~/components/cores/Footer";
 import { Toaster } from "~/components/ui/sonner";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Depop",
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-worksans`}>
-        <Navbar />
-        <Toaster />
-        {children}
-        <Footer />
+        <Providers>
+          <Navbar />
+          <Toaster />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -8,6 +8,9 @@ import AppSidebar from "../AppSidebar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useContext } from "react";
+import { userContext } from "~/supports/context/useUserContext";
+import UserAvatar from "~/components/ui/userAvatar";
 
 export default function Navbar() {
   const categoryItems = [
@@ -21,6 +24,7 @@ export default function Navbar() {
 
   const router = useRouter();
   const pathname = usePathname();
+  const { userData, setUserData } = useContext(userContext);
   return (
     <div
       className={
@@ -49,7 +53,7 @@ export default function Navbar() {
               placeholder="Search for items, brands, or styles..."
             />
           </div>
-          <span className="lg:w-[406px] h-10 flex items-center gap-4 lg:gap-6">
+          <span className="lg:w-[406px] h-10 flex items-center xl:justify-between gap-4 xl:gap-0">
             <span className="flex items-center gap-2 lg:gap-6">
               <Heart
                 color="#000000"
@@ -77,32 +81,50 @@ export default function Navbar() {
               </span>
             </span>
             {/* Small Screen Button */}
-            <Link href={"/signup"}>
-              <Button className="flex lg:hidden items-center justify-center w-[116px] h-8 rounded-none font-bold text-lg">
-                Sign Up
-              </Button>
-            </Link>
+            <div className="flex lg:hidden items-center justify-center">
+              {!userData && (
+                <Link href={"/signup"}>
+                  <Button className="w-[116px] h-8 rounded-none font-bold text-lg">
+                    Sign Up
+                  </Button>
+                </Link>
+              )}
+              {userData && (
+                <UserAvatar name={userData.username} className="ml-2" />
+              )}
+            </div>
             {/* Large Screen Button */}
-            <span className="hidden lg:flex items-center gap-2">
+            <span
+              className={`hidden lg:flex items-center ${
+                userData ? "justify-end gap-6" : "gap-2"
+              }`}
+            >
               <Button className="w-[116px] h-8 rounded-none font-bold text-lg">
                 Sell Now
               </Button>
-              <Link href={"/signup"}>
-                <Button
-                  className="w-[108px] h-8 rounded-none font-bold text-lg border-2 border-black"
-                  variant="outline"
-                >
-                  Sign Up
-                </Button>
-              </Link>
-              <Link href={"/signin"}>
-                <Button
-                  className="w-[74px] h-7 no-underline font-bold text-lg"
-                  variant="link"
-                >
-                  Log in
-                </Button>
-              </Link>
+              {!userData && (
+                <>
+                  <Link href={"/signup"} className="flex">
+                    <Button
+                      className="w-[108px] h-8 rounded-none font-bold text-lg border-2 border-black"
+                      variant="outline"
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                  <Link href={"/signin"} className="flex">
+                    <Button
+                      className="w-[74px] h-7 no-underline font-bold text-lg"
+                      variant="link"
+                    >
+                      Log in
+                    </Button>
+                  </Link>
+                </>
+              )}
+              {userData && (
+                <UserAvatar name={userData.username} className="ml-2" />
+              )}
             </span>
           </span>
         </div>
