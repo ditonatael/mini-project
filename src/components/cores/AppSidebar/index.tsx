@@ -10,12 +10,16 @@ import {
   SheetTrigger,
 } from "../../ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import Link from "next/link";
+import { userContext } from "~/supports/context/useUserContext";
+import { useContext } from "react";
 
 export default function AppSidebar({
   categoryItems,
 }: {
   categoryItems: string[];
 }) {
+  const { userData } = useContext(userContext);
   return (
     <div className="flex lg:hidden">
       <Sheet>
@@ -36,18 +40,26 @@ export default function AppSidebar({
               <Button className="w-full h-8 rounded-none font-bold text-lg">
                 Sell Now
               </Button>
-              <Button
-                className="w-full h-8 rounded-none font-bold text-lg border-2 border-black"
-                variant="outline"
-              >
-                Sign Up
-              </Button>
-              <Button
-                className="w-full h-8 rounded-none font-bold text-lg border-2 border-black"
-                variant="outline"
-              >
-                Log in
-              </Button>
+              {!userData && (
+                <>
+                  <Link href={"/signup"}>
+                    <Button
+                      className="w-full h-8 rounded-none font-bold text-lg border-2 border-black"
+                      variant="outline"
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                  <Link href={"/signin"}>
+                    <Button
+                      className="w-full h-8 rounded-none font-bold text-lg border-2 border-black"
+                      variant="outline"
+                    >
+                      Log in
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </SheetHeader>
           <SheetDescription>
