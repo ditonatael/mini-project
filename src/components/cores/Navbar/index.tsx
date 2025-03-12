@@ -8,9 +8,10 @@ import AppSidebar from "../AppSidebar";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { userContext } from "~/supports/context/useUserContext";
 import UserAvatar from "~/components/ui/userAvatar";
+import axios from "axios";
 
 export default function Navbar() {
   const categoryItems = [
@@ -25,6 +26,29 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const { userData, setUserData } = useContext(userContext);
+
+  const handleKeepLogin = async () => {
+    try {
+      const userId = localStorage.getItem("user");
+
+      if (userId) {
+        const { data: user } = await axios.get(
+          `http://localhost:5000/users?id=${userId}`
+        );
+        console.log(user);
+        setUserData({
+          id: user[0].id,
+          username: user[0].username,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleKeepLogin();
+  }, []);
   return (
     <div
       className={

@@ -47,8 +47,11 @@ export default function SigninForm() {
       if (!comparePassword) throw new Error("Password doesn't match!");
 
       setUserData({
+        id: user[0].id,
         username: user[0].username,
       });
+
+      localStorage.setItem("user", user[0].id);
 
       toast("Login Success");
       router.push("/");
