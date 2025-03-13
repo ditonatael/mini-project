@@ -4,9 +4,10 @@ import * as React from "react";
 import { useState } from "react";
 import { cn } from "~/lib/utils";
 import { Eye, EyeOff } from "lucide-react";
+import { ControllerRenderProps, FieldValues } from "react-hook-form";
 
 interface PasswordInputProps extends React.ComponentProps<"input"> {
-  field?: any;
+  field?: ControllerRenderProps<FieldValues, string>;
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
