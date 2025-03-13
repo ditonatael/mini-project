@@ -6,7 +6,11 @@ import {
 } from "../ui/accordion";
 import { useState, useEffect } from "react";
 
-export default function FooterAcordion({ footerItem }: { footerItem: any[] }) {
+export default function FooterAcordion({
+  footerItem,
+}: {
+  footerItem: { title: string; children: string[] }[];
+}) {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {

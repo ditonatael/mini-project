@@ -14,7 +14,6 @@ export default function ProductDetailCarousel({
   images: string[];
   brand: string;
 }) {
-  const items = [1, 2, 3, 4];
   return (
     <div className="pt-1 block md:hidden">
       <Carousel>

@@ -22,7 +22,7 @@ export default function Signin() {
             </div>
             <h1 className="text-2xl font-bold text-center">Log in</h1>
             <span className=" inline-flex gap-1">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <a href="/signup" className="text-sky-600">
                 Sign up
               </a>
