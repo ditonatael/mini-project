@@ -11,7 +11,6 @@ import { usePathname } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { userContext } from "~/supports/context/useUserContext";
 import UserAvatar from "~/components/ui/userAvatar";
-import axios from "axios";
 import {
   db,
   getDocs,
