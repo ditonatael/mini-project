@@ -3,7 +3,6 @@ import { Heart } from "lucide-react";
 import Image from "next/image";
 import type { Products } from "../../../types/productType";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function ProductCard({ products }: { products: Products }) {
