@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  collection,
+  getDocs,
+  db,
+  query,
+  where,
+} from "../../../../utils/firebase";
 import { ChevronRight, ShieldCheck, Star, Truck } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
@@ -7,7 +14,6 @@ import ProductDetailCarousel from "~/components/ProductDetail/Carousel";
 import YouMightLikeSection from "~/components/ProductDetail/Header";
 import { useState, useEffect, use } from "react";
 import type { Products } from "../../../../types/productType";
-import axios from "axios";
 import Image from "next/image";
 import Loading from "~/components/cores/Loading";
 import PageWrapper from "~/components/cores/PageWrapper";
@@ -23,8 +29,11 @@ export default function ProductDetail({
 
   const OnHandleGetSelectedProduct = async (id: string) => {
     try {
-      const res = await axios.get(`http://localhost:5000/products?id=${id}`);
-      setProduct(res.data[0]);
+      const getQuery = query(collection(db, "products"), where("id", "==", id));
+      const res = await getDocs(getQuery);
+
+      const product = res.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setProduct(product[0] as Products);
     } catch (error) {
       console.log(error);
     }

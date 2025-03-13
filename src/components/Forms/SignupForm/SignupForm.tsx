@@ -15,10 +15,19 @@ import {
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { PasswordInput } from "~/components/ui/passwordInput";
-import axios from "axios";
 import { toast } from "sonner";
 import bcrypt from "bcryptjs";
 import { useRouter } from "next/navigation";
+import {
+  collection,
+  getDocs,
+  db,
+  query,
+  where,
+  addDoc,
+  updateDoc,
+  doc,
+} from "../../../../utils/firebase";
 
 export default function SingupForm() {
   const router = useRouter();
@@ -37,10 +46,12 @@ export default function SingupForm() {
 
   async function onSubmit(values: z.infer<typeof SignupFormSchema>) {
     try {
-      const { data: existingUser } = await axios.get(
-        `http://localhost:5000/users?email=${values.email}`
+      const existingUserQuery = query(
+        collection(db, "users"),
+        where("email", "==", values.email)
       );
-      if (existingUser.length > 0) {
+      const existingUser = await getDocs(existingUserQuery);
+      if (existingUser.docs.length > 0) {
         throw new Error("Email Already Registered");
       }
 
@@ -57,7 +68,8 @@ export default function SingupForm() {
           values.country.charAt(0).toUpperCase() + values.country.slice(1),
       };
 
-      await axios.post("http://localhost:5000/users", normalizeValues);
+      const docRef = await addDoc(collection(db, "users"), normalizeValues);
+      await updateDoc(doc(db, "users", docRef.id), { id: docRef.id });
       toast("Signup Succesful!");
       form.reset();
       router.push("/signin");

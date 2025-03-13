@@ -12,6 +12,14 @@ import { useContext, useEffect } from "react";
 import { userContext } from "~/supports/context/useUserContext";
 import UserAvatar from "~/components/ui/userAvatar";
 import axios from "axios";
+import {
+  db,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "../../../../utils/firebase";
+import { User } from "../../../../types/userType";
 
 export default function Navbar() {
   const categoryItems = [
@@ -32,13 +40,20 @@ export default function Navbar() {
       const userId = localStorage.getItem("user");
 
       if (userId) {
-        const { data: user } = await axios.get(
-          `http://localhost:5000/users?id=${userId}`
+        const findUserQuery = query(
+          collection(db, "users"),
+          where("id", "==", userId)
         );
-        console.log(user);
+        const findUser = await getDocs(findUserQuery);
+        const existingUser = findUser.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        const user = existingUser[0] as User;
+
         setUserData({
-          id: user[0].id,
-          username: user[0].username,
+          id: user.id,
+          username: user.username,
         });
       }
     } catch (error) {

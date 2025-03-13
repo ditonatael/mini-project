@@ -1,17 +1,22 @@
 "use client";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import type { Products } from "../../../types/productType";
 import ProductCard from "../ui/productCard";
 import Loading from "../cores/Loading";
+import { collection, getDocs, db } from "../../../utils/firebase";
 
 export default function ProductList() {
   const [products, setProducts] = useState<Products[] | null>(null);
 
   const HandleGetProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/products");
-      setProducts(res.data);
+      const res = await getDocs(collection(db, "products"));
+      const productsList = res.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setProducts(productsList as Products[]);
     } catch (error) {
       console.log(error);
     }

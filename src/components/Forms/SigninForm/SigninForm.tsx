@@ -16,10 +16,17 @@ import { Input } from "~/components/ui/input";
 import { PasswordInput } from "~/components/ui/passwordInput";
 import { useContext } from "react";
 import { userContext } from "~/supports/context/useUserContext";
-import axios from "axios";
+import type { User } from "../../../../types/userType";
 import { toast } from "sonner";
 import bcrypt from "bcryptjs";
 import { useRouter } from "next/navigation";
+import {
+  collection,
+  getDocs,
+  db,
+  query,
+  where,
+} from "../../../../utils/firebase";
 
 export default function SigninForm() {
   const { setUserData } = useContext(userContext);
@@ -35,23 +42,31 @@ export default function SigninForm() {
 
   async function onSubmit(values: z.infer<typeof SigninFormSchema>) {
     try {
-      const { data: user } = await axios.get(
-        `http://localhost:5000/users?email=${values.email}`
+      const findUserQuery = query(
+        collection(db, "users"),
+        where("email", "==", values.email)
       );
-      if (user.length < 1) throw new Error("User not found!");
+      const findUser = await getDocs(findUserQuery);
+      if (findUser.docs.length < 1) throw new Error("User not found!");
+      const existingUser = findUser.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      const user = existingUser[0] as User;
 
       const comparePassword = await bcrypt.compare(
         values.password,
-        user[0].password
+        user.password
       );
       if (!comparePassword) throw new Error("Password doesn't match!");
 
       setUserData({
-        id: user[0].id,
-        username: user[0].username,
+        id: user.id,
+        username: user.username,
       });
 
-      localStorage.setItem("user", user[0].id);
+      localStorage.setItem("user", user.id);
 
       toast("Login Success");
       router.push("/");
