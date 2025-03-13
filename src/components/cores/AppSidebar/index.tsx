@@ -11,7 +11,7 @@ import {
 } from "../../ui/sheet";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Link from "next/link";
-import { userContext } from "~/supports/context/useUserContext";
+import { UserContext } from "~/supports/context/useUserContext";
 import { useContext } from "react";
 
 export default function AppSidebar({
@@ -19,7 +19,7 @@ export default function AppSidebar({
 }: {
   categoryItems: string[];
 }) {
-  const { userData } = useContext(userContext);
+  const { userData } = useContext(UserContext);
   return (
     <div className="flex lg:hidden">
       <Sheet>

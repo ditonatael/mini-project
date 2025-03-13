@@ -15,7 +15,7 @@ import {
 import { Input } from "~/components/ui/input";
 import { PasswordInput } from "~/components/ui/passwordInput";
 import { useContext } from "react";
-import { userContext } from "~/supports/context/useUserContext";
+import { UserContext } from "~/supports/context/useUserContext";
 import type { User } from "../../../../types/userType";
 import { toast } from "sonner";
 import bcrypt from "bcryptjs";
@@ -29,7 +29,7 @@ import {
 } from "../../../../utils/firebase";
 
 export default function SigninForm() {
-  const { setUserData } = useContext(userContext);
+  const { setUserData } = useContext(UserContext);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof SigninFormSchema>>({
@@ -57,7 +57,7 @@ export default function SigninForm() {
 
       const comparePassword = await bcrypt.compare(
         values.password,
-        user.password
+        user.password as string
       );
       if (!comparePassword) throw new Error("Password doesn't match!");
 

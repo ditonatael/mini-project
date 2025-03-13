@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect } from "react";
-import { userContext } from "~/supports/context/useUserContext";
+import { UserContext } from "~/supports/context/useUserContext";
 import UserAvatar from "~/components/ui/userAvatar";
 import {
   db,
@@ -32,7 +32,7 @@ export default function Navbar() {
 
   const router = useRouter();
   const pathname = usePathname();
-  const { userData, setUserData } = useContext(userContext);
+  const { userData, setUserData } = useContext(UserContext);
 
   const handleKeepLogin = async () => {
     try {

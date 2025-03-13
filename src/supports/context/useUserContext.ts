@@ -1,8 +1,4 @@
 import { createContext } from "react";
-import { User } from "../../../types/userType";
+import type { UserContextType } from "../../../types/userType";
 
-interface UserContextType {
-    userData: User | null;
-    setUserData: React.Dispatch<React.SetStateAction<User | null>>;
-}
-export const userContext = createContext<UserContextType | null>(null)
+export const UserContext = createContext<UserContextType>({} as UserContextType)

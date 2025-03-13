@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 import { useContext } from "react";
-import { userContext } from "~/supports/context/useUserContext";
+import { UserContext } from "~/supports/context/useUserContext";
 
 export default function UserAvatar({
   name,
@@ -19,7 +19,7 @@ export default function UserAvatar({
   name: string;
   className: string;
 }) {
-  const { setUserData } = useContext(userContext);
+  const { setUserData } = useContext(UserContext);
 
   const handleLogout = () => {
     setUserData(null);
